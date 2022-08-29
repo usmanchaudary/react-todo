@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import NavBar from './Components/NavBar'
+import SearchBar from './Components/SearchBar';
+import TodoList from './Components/TodoList';
+const App = () => {
+  const [todos, setTodos] = useState([{ id: 1, value: 'Do Stuff' }, { id: 2, value: 'Do Stuff 2' }]);
 
-function App() {
+  const addTodo = text => {
+    if(!text) return;
+    let lastTodo = todos[todos.length -1];
+    const newTodo = [...todos, { value: text,id: lastTodo.id + 1 }];
+    setTodos(newTodo);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar></NavBar>
+      {/* passing function as a parameter */}
+      <SearchBar addTodo={addTodo}></SearchBar>
+
+      <TodoList todos={todos}></TodoList>
+
     </div>
   );
 }
