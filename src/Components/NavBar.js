@@ -1,3 +1,5 @@
+import { BrowserRouter, Link } from "react-router-dom";
+
 export default function Navbar() {
     return (
         <>
@@ -7,17 +9,17 @@ export default function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Privacy</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Protected Routes</a>
-                        </li>
-                    </ul>
+                        <ul className="navbar-nav">
+                            <li className="nav-item active">
+                                <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/hello">Hello</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/hellocopy">Protected Routes</Link>
+                            </li>
+                        </ul>
                 </div>
             </nav>
         </>
